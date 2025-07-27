@@ -1,4 +1,42 @@
 # ATTS
+This analysis aimed to examine coal price movements across various grades over time, utilizing Python’s robust data handling and statistical capabilities.
+
+🧼 Data Cleaning & Preprocessing
+Dataset Ingestion: Loaded from Excel using pandas.read_excel().
+
+Null Value Treatment:
+
+Initial null inspection using isnull().sum() and total count.
+
+Forward Fill (pad) and Backward Fill (bfill) were sequentially applied to smooth out gaps.
+
+dropna(subset=['Date']) removed rows with corrupt or missing date entries.
+
+Final dataset reset using reset_index(drop=True) for clarity.
+
+📊 Statistical Computation
+Used describe() for a statistical overview and calculated advanced metrics manually:
+
+Central Tendency:
+
+Mean (mean()), Median (median()), Mode (mode().iloc[0])
+
+Dispersion:
+
+Variance (var()), Standard Deviation (std()), Range (max() - min())
+
+Shape of Distribution:
+
+Skewness (skew()): Assessed asymmetry in price distributions.
+
+Kurtosis (kurtosis()): Evaluated tail heaviness and outlier concentration.
+
+🔍 Observations & Insights
+Null handling dramatically improved dataset quality for time-series analysis.
+
+Statistically, several coal grades exhibited positive skewness and high kurtosis—indicating market volatility with sporadic surges.
+
+Range and standard deviation confirmed significant variation, especially for premium coal types.
 import pandas as pd
 import numpy as np
 from scipy.stats import skew, kurtosis
